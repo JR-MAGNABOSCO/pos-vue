@@ -13,7 +13,7 @@ export default {
 <style scoped>
 .content {
     flex: 1;
-    padding: 20px;
+    padding: 10px;
     overflow-y: auto;
 }
 </style>

@@ -5,7 +5,9 @@
         <ul class="nav-links">
             <li><router-link to="/">Home</router-link></li>
             <li><router-link to="/noticias">Notícias</router-link></li>
-            <li><router-link to="/noticias">Sobre</router-link></li>
+            <li><router-link to="/noticias/nova">Nova Notícia</router-link></li>
+            <li><router-link to="/contato">Contato</router-link></li>
+            <li><router-link to="/sobre">Sobre</router-link></li>
         </ul>
         <div class="search-container">
             <input type="text" placeholder="Pesquisar..." class="search-input" />

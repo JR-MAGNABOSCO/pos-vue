@@ -1,15 +1,15 @@
 <template>
     <aside class="sidebar">
         <nav class="sidebar-menu">
-            <a href="#" class="menu-item">
+            <a href="/" class="menu-item">
                 <font-awesome-icon :icon="['fas', 'house']" />
                 <span>Início</span>
             </a>
-            <a href="#" class="menu-item">
+            <a href="/sobre" class="menu-item">
                 <font-awesome-icon :icon="['fas', 'user']" />
                 <span>Sobre</span>
             </a>
-            <a href="#" class="menu-item">
+            <a href="/contato" class="menu-item">
                 <font-awesome-icon :icon="['fas', 'envelope']" />
                 <span>Contato</span>
             </a>
