@@ -1,9 +1,9 @@
 <!-- src/pages/Home.vue -->
 <template>
-    <div class="container mt-4">
+    <div class="container-fluid">
 
         <!-- Carrossel de destaques -->
-        <div id="carouselDestaques" class="carousel slide mb-5" data-bs-ride="carousel">
+        <div id="carouselDestaques" class="carousel slide mb-5 rounded-3" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item" v-for="(noticia, index) in destaques"
                     :class="['carousel-item', { active: index === 0 }]" :key="noticia.id" data-bs-interval="5000"
@@ -28,10 +28,10 @@
         </div>
 
         <!-- Botões de categorias -->
-        <div class="mb-4 d-flex flex-wrap gap-4">
+        <div class="mb-4 d-flex flex-wrap gap-3">
             <button v-for="categoria in categorias" :key="categoria.id" class="btn btn-outline-primary btn-sm"
                 @click="verCategoria(categoria.id)">
-                {{ categoria.nome }} ({{ categoria.noticias_count }})
+                {{ categoria.nome }} - ({{ categoria.noticias_count }})
             </button>
         </div>
 
@@ -64,10 +64,11 @@ function verCategoria(id) {
 
 <style scoped>
 #carouselDestaques {
+    display: flex;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 1000;
-    box-shadow: 0 2px 5px rgba(197, 197, 197, 0.8);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
 }
 </style>
