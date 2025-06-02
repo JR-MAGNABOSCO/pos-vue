@@ -22,20 +22,42 @@
                 <input v-model="imagem" type="url" class="form-control" placeholder="https://exemplo.com/imagem.jpg" />
             </div>
 
+            <div class="mb-3">
+                <label class="form-label fw-bold">Categoria</label>
+                <select v-model="categoriaId" class="form-select" required>
+                    <option value="" disabled selected>Selecione uma categoria</option>
+                    <option v-for="cat in categorias" :key="cat.id" :value="cat.id">
+                        {{ cat.nome }}
+                    </option>
+                </select>
+            </div>
+
             <button type="submit" class="btn btn-success">Salvar</button>
         </form>
     </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import axios from 'axios'
 
 const titulo = ref('')
 const conteudo = ref('')
 const imagem = ref('')
+const categoriaId = ref('')
+const categorias = ref([])
+
 const mensagem = ref('')
 const mensagemClasse = ref('')
+
+const carregarCategorias = async () => {
+    try {
+        const response = await axios.get('/categorias?simples=true')
+        categorias.value = response.data
+    } catch (error) {
+        console.error('Erro ao carregar categorias:', error)
+    }
+}
 
 const enviar = async () => {
     try {
@@ -43,6 +65,7 @@ const enviar = async () => {
             titulo: titulo.value,
             conteudo: conteudo.value,
             imagem: imagem.value,
+            categoria_id: categoriaId.value
         })
 
         mensagem.value = response.data.message
@@ -51,10 +74,15 @@ const enviar = async () => {
         titulo.value = ''
         conteudo.value = ''
         imagem.value = ''
+        categoriaId.value = ''
     } catch (error) {
         console.error(error)
         mensagem.value = 'Erro ao enviar notícia.'
         mensagemClasse.value = 'alert-danger'
     }
 }
+
+onMounted(() => {
+    carregarCategorias()
+})
 </script>
